@@ -1,0 +1,61 @@
+name: Otomatik Uygulama Derleme (iOS & Android)
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch: # Manuel olarak butona basıp başlatabilmek için
+
+jobs:
+  build-android:
+    name: Android APK Derle
+    runs-on: ubuntu-latest
+    steps:
+      - name: Kodları İndir
+        uses: actions/checkout@v4
+        
+      - name: Flutter Kurulumu
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          
+      - name: Paketleri İndir
+        run: flutter pub get
+        
+      - name: APK Derle
+        run: flutter build apk --release
+        
+      - name: Çıktıyı Yükle
+        uses: actions/upload-artifact@v4
+        with:
+          name: UnutmaHa-Android-APK
+          path: build/app/outputs/flutter-apk/app-release.apk
+
+  build-ios:
+    name: Apple iOS IPA Derle
+    runs-on: macos-latest
+    steps:
+      - name: Kodları İndir
+        uses: actions/checkout@v4
+        
+      - name: Flutter Kurulumu
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          
+      - name: Paketleri İndir
+        run: flutter pub get
+        
+      - name: iOS Uygulamasını Derle (İmzasız)
+        run: flutter build ios --release --no-codesign
+        
+      - name: Uygulamayı IPA Paketine Çevir
+        run: |
+          mkdir -p Payload
+          mv build/ios/iphoneos/Runner.app Payload/
+          zip -r UnutmaHa-iOS.ipa Payload
+          
+      - name: Çıktıyı Yükle
+        uses: actions/upload-artifact@v4
+        with:
+          name: UnutmaHa-iOS-IPA
+          path: UnutmaHa-iOS.ipa

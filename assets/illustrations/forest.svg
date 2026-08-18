@@ -1,0 +1,9 @@
+<svg width="400" height="200" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Forest leaves and vines -->
+  <path d="M-10,220 C20,150 100,200 150,100 C200,0 280,80 350,-10 C400,-60 450,0 450,0" stroke="currentColor" stroke-width="5" opacity="0.2" fill="none" stroke-linecap="round"/>
+  
+  <!-- Leaf silhouettes -->
+  <path d="M100,150 C120,120 160,130 150,160 C140,190 100,170 100,150 Z" fill="currentColor" opacity="0.15" />
+  <path d="M280,50 C310,20 350,40 330,70 C310,100 260,70 280,50 Z" fill="currentColor" opacity="0.1" />
+  <path d="M200,10 C220,-10 250,5 240,25 C230,45 190,30 200,10 Z" fill="currentColor" opacity="0.08" />
+</svg>

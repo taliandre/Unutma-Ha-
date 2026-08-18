@@ -1,0 +1,12 @@
+<svg width="400" height="200" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Purple Night stars and auroras -->
+  <path d="M-50,50 C50,150 150,-50 250,100 C350,250 400,50 450,100" stroke="currentColor" stroke-width="8" opacity="0.15" fill="none" stroke-linecap="round"/>
+  <path d="M-20,180 C80,100 180,200 280,80 C380,-40 420,120 480,60" stroke="currentColor" stroke-width="4" opacity="0.1" fill="none" stroke-linecap="round"/>
+  
+  <!-- Stars -->
+  <path d="M60,40 L65,55 L80,60 L65,65 L60,80 L55,65 L40,60 L55,55 Z" fill="currentColor" opacity="0.2" />
+  <path d="M300,150 L303,160 L313,163 L303,166 L300,176 L297,166 L287,163 L297,160 Z" fill="currentColor" opacity="0.15" />
+  <circle cx="150" cy="80" r="2" fill="currentColor" opacity="0.3" />
+  <circle cx="220" cy="30" r="3" fill="currentColor" opacity="0.2" />
+  <circle cx="380" cy="110" r="2" fill="currentColor" opacity="0.4" />
+</svg>

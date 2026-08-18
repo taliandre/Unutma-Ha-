@@ -1,0 +1,8 @@
+<svg width="400" height="200" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Snowflakes and wind -->
+  <path d="M50,50 L70,70 M70,50 L50,70 M60,40 L60,80 M40,60 L80,60" stroke="currentColor" stroke-width="3" opacity="0.2" stroke-linecap="round" />
+  <path d="M300,120 L320,140 M320,120 L300,140 M310,110 L310,150 M290,130 L330,130" stroke="currentColor" stroke-width="2" opacity="0.15" stroke-linecap="round" />
+  <path d="M180,30 L195,45 M195,30 L180,45 M187.5,22 L187.5,52 M172,37.5 L202,37.5" stroke="currentColor" stroke-width="2" opacity="0.1" stroke-linecap="round" />
+  <path d="M-20,150 C100,50 200,220 450,50" stroke="currentColor" stroke-width="6" opacity="0.1" fill="none" stroke-linecap="round" />
+  <path d="M-50,100 C80,10 180,180 400,20" stroke="currentColor" stroke-width="2" opacity="0.08" fill="none" stroke-linecap="round" />
+</svg>

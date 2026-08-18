@@ -1,0 +1,8 @@
+<svg width="400" height="200" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Sand dunes -->
+  <path d="M-20,180 C80,120 180,150 280,100 C380,50 420,120 480,80" stroke="currentColor" stroke-width="5" opacity="0.2" fill="none" stroke-linecap="round"/>
+  <path d="M-50,220 C100,140 200,190 350,130 C450,90 500,130 550,130" stroke="currentColor" stroke-width="3" opacity="0.15" fill="none" stroke-linecap="round"/>
+  <path d="M100,250 C220,180 300,210 420,160 C500,120 550,170 600,150" stroke="currentColor" stroke-width="2" opacity="0.1" fill="none" stroke-linecap="round"/>
+  <!-- Distant sun -->
+  <circle cx="350" cy="60" r="30" fill="currentColor" opacity="0.1" />
+</svg>

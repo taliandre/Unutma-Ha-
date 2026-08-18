@@ -1,0 +1,11 @@
+<svg width="400" height="200" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Planet and orbits -->
+  <ellipse cx="200" cy="100" rx="150" ry="40" stroke="currentColor" stroke-width="4" opacity="0.15" fill="none" transform="rotate(-15 200 100)" />
+  <ellipse cx="200" cy="100" rx="180" ry="60" stroke="currentColor" stroke-width="1.5" opacity="0.08" fill="none" transform="rotate(-15 200 100)" />
+  <circle cx="200" cy="100" r="45" fill="currentColor" opacity="0.1" />
+  <!-- Stars -->
+  <circle cx="80" cy="50" r="3" fill="currentColor" opacity="0.3" />
+  <circle cx="350" cy="160" r="2.5" fill="currentColor" opacity="0.2" />
+  <circle cx="120" cy="170" r="1.5" fill="currentColor" opacity="0.15" />
+  <circle cx="320" cy="40" r="2" fill="currentColor" opacity="0.4" />
+</svg>
