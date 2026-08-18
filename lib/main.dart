@@ -3,6 +3,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:threshold/app/app.dart';
 import 'package:threshold/core/services/app_bootstrap.dart';
+import 'package:threshold/core/services/background_service.dart';
 import 'package:threshold/core/services/history_service.dart';
 import 'package:threshold/core/services/local_storage_service.dart';
 
@@ -26,6 +27,7 @@ Future<void> onBackgroundNotificationResponse(
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await AppBackgroundService.initialize();
   await AppBootstrap.initialize();
   runApp(
     const ProviderScope(
