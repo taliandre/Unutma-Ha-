@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.threshold"
+    namespace = "com.taha.unutmaha"
     compileSdk = 37
     ndkVersion = flutter.ndkVersion
 
@@ -23,7 +23,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.threshold"
+        applicationId = "com.taha.unutmaha"
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
