@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Threshold</string>
+	<string>Unutma Ha!</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -26,6 +26,19 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Evden veya güvenli bölgeden ayrıldığınızı arka planda algılayıp size akıllı hatırlatmalar (şemsiye al, anahtarını unutma) yapabilmemiz için konum iznine ihtiyacımız var.</string>
+	
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Geçerli konumunuzun anlık hava durumunu öğrenmek ve güvenli alan sınırlarınızı harita üzerinde belirlemek için konum iznine ihtiyacımız var.</string>
+
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Uygulama kapalıyken bile evden ayrıldığınızı algılayıp akıllı uyarı gönderebilmemiz için arka planda konumunuza erişmemiz gerekiyor.</string>
+	
+	<key>NSCalendarsUsageDescription</key>
+	<string>Günlük etkinliklerinizi "Unutma Ha!" ana ekranında görebilmeniz için cihazınızın takvimine sadece okuma ve hatırlatma amaçlı erişim gereklidir.</string>
+	
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -49,6 +62,11 @@
 	</dict>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>location</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
