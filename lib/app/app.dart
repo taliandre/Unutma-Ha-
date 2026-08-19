@@ -25,7 +25,7 @@ class _ThresholdAppState extends State<ThresholdApp> with WidgetsBindingObserver
     // Uygulama ilk açıldığında (cold boot) müzik/bildirim varsa şak diye kes!
     try {
       FlutterBackgroundService().invoke('stopSound');
-      FlutterLocalNotificationsPlugin().cancel(1);
+      FlutterLocalNotificationsPlugin().cancel(id: 1);
     } catch (_) {}
   }
 
@@ -44,7 +44,7 @@ class _ThresholdAppState extends State<ThresholdApp> with WidgetsBindingObserver
       // ve alarm bildirimini temizle!
       try {
         FlutterBackgroundService().invoke('stopSound');
-        FlutterLocalNotificationsPlugin().cancel(1);
+        FlutterLocalNotificationsPlugin().cancel(id: 1);
       } catch (_) {}
     }
   }
