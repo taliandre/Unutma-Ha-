@@ -79,14 +79,14 @@ class SettingsScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Alıcı: [ADIN SOYADIN]',
+                                'Alıcı: TALHA UBEYDE BEŞİR',
                                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
                                       color: Theme.of(context).colorScheme.onSurfaceVariant,
                                     ),
                               ),
                               const SizedBox(height: 4),
                               Text(
-                                'TR00 0000 0000 0000 0000 0000 00',
+                                'TR35 0086 9000 0000 0406 7908 20',
                                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                                       fontWeight: FontWeight.bold,
                                       letterSpacing: 1.1,
@@ -100,7 +100,7 @@ class SettingsScreen extends StatelessWidget {
                           tooltip: 'IBAN\'ı Kopyala',
                           onPressed: () async {
                             await Clipboard.setData(
-                              const ClipboardData(text: 'TR00 0000 0000 0000 0000 0000 00'),
+                              const ClipboardData(text: 'TR35 0086 9000 0000 0406 7908 20'),
                             );
                             if (context.mounted) {
                               ScaffoldMessenger.of(context).showSnackBar(
