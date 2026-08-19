@@ -43,8 +43,8 @@ class TriggerEngine {
     // Eğer daha önce Wi-Fi'ya bağlı değilsek (4G, vb.), kopuş sayılmaz.
     final wasOnWifi = _lastResult == ConnectivityResult.wifi;
 
-    if (result == ConnectivityResult.none && wasOnWifi && !_notifSent) {
-      // Ev Wi-Fi'sından kopuldu → bildirim gönder
+    if (result != ConnectivityResult.wifi && wasOnWifi && !_notifSent) {
+      // Ev Wi-Fi'sından kopuldu (mobil veriye geçti veya tamamen internetsiz) → bildirim gönder
       _notifSent = true;
       _handleWiFiDisconnect(homeWifi);
     } else if (result == ConnectivityResult.wifi) {
