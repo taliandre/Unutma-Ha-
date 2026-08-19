@@ -29,7 +29,7 @@
 Uygulamamızı Android ve iOS cihazlarınıza manuel olarak kurabilirsiniz:
 
 ### 🤖 Android (.apk)
-[![İndir Android](https://img.shields.io/badge/Android-APK_İndir-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://drive.google.com/file/d/1m3LY5-fg7OEqhid4X9eKFnYr0O9a6jh4/view?usp=drive_link)
+[![İndir Android](https://img.shields.io/badge/Android-APK_İndir-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://taliandre.github.io/Unutma-Ha-/UnutmaHa.apk)
 *Not: Kurulum yaparken telefonunuz uyarı verirse "Bilinmeyen Kaynaklara İzin Ver" seçeneğini aktif etmeniz gerekmektedir.*
 
 ### 🍏 iOS (.ipa)
