@@ -123,6 +123,9 @@ class NotificationService {
   Future<void> _playSound(NotifSoundMode mode, String? customPath) async {
     try {
       await _audioPlayer.stop();
+      await _audioPlayer.setVolume(1.0);
+      await _audioPlayer.setReleaseMode(ReleaseMode.stop);
+
       switch (mode) {
         case NotifSoundMode.alarm:
           // Android sistem alarm URI

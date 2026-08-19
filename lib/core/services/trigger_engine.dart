@@ -21,7 +21,10 @@ class TriggerEngine {
   // Bildirim gönderildi mi? Tekrar bağlanana kadar bir daha gönderme.
   bool _notifSent = false;
 
-  void _onConnectivityChange(ConnectivityResult result) {
+  Future<void> _onConnectivityChange(ConnectivityResult result) async {
+    // ── Isolate senkronizasyonu için önbelleği yenile ───────────────────
+    await LocalStorageService.prefs.reload();
+
     // ── Guard 1: Bildirim özelliği açık mı? ──────────────────────────────
     final notificationsEnabled =
         LocalStorageService.prefs.getBool('notifications_enabled') ?? true;

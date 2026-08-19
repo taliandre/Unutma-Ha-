@@ -7,11 +7,13 @@ import 'package:threshold/core/services/notification_service.dart';
 import 'package:threshold/core/services/trigger_engine.dart';
 
 class AppBootstrap {
-  static Future<InitializationResult> initialize() async {
+  static Future<InitializationResult> initialize({bool isBackground = false}) async {
     await LocalStorageService.init();
 
     final notificationService = NotificationService();
-    await notificationService.requestPermissions();
+    if (!isBackground) {
+      await notificationService.requestPermissions();
+    }
     await notificationService.initialize(
       // Buton tıklandı (Ertele / Hepsini Aldım) — uygulama açıkken
       onActionSelected: (actionId) async {

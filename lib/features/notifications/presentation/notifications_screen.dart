@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:threshold/core/services/local_storage_service.dart';
 import 'package:threshold/core/services/notification_service.dart';
 
@@ -73,7 +74,14 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
     );
 
     if (file != null && file.path != null) {
-      final path = file.path!;
+      final docDir = await getApplicationDocumentsDirectory();
+      final originalFile = File(file.path!);
+      final ext = originalFile.path.split('.').last;
+      final newPath = '${docDir.path}/custom_sound_${DateTime.now().millisecondsSinceEpoch}.$ext';
+      
+      final permanentFile = await originalFile.copy(newPath);
+      final path = permanentFile.path;
+
       await NotificationService.setCustomSoundPath(path);
       await NotificationService.setSoundMode(NotifSoundMode.custom);
       setState(() {
