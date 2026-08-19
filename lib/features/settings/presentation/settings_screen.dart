@@ -40,6 +40,30 @@ class SettingsScreen extends StatelessWidget {
               }
             },
           ),
+          ListTile(
+            leading: const Icon(Icons.language_rounded),
+            title: const Text('Resmi Web Sitesi'),
+            subtitle: const Text('Uygulama tanıtım sayfası'),
+            trailing: const Icon(Icons.open_in_new_rounded, size: 20),
+            onTap: () async {
+              final url = Uri.parse('https://taliandre.github.io/Unutma-Ha-/');
+              if (await canLaunchUrl(url)) {
+                await launchUrl(url, mode: LaunchMode.externalApplication);
+              }
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.code_rounded),
+            title: const Text('Açık Kaynak Kodları'),
+            subtitle: const Text('GitHub üzerinden projeyi incele'),
+            trailing: const Icon(Icons.open_in_new_rounded, size: 20),
+            onTap: () async {
+              final url = Uri.parse('https://github.com/taliandre/Unutma-Ha-');
+              if (await canLaunchUrl(url)) {
+                await launchUrl(url, mode: LaunchMode.externalApplication);
+              }
+            },
+          ),
           const SizedBox(height: 24),
           Card(
             elevation: 0,
