@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_background_service/flutter_background_service.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:threshold/app/router.dart';
 import 'package:threshold/core/theme/app_theme.dart';
 import 'package:threshold/core/theme/theme_notifier.dart';
@@ -10,7 +12,7 @@ class ThresholdApp extends StatefulWidget {
   State<ThresholdApp> createState() => _ThresholdAppState();
 }
 
-class _ThresholdAppState extends State<ThresholdApp> {
+class _ThresholdAppState extends State<ThresholdApp> with WidgetsBindingObserver {
   late final ThemeNotifier _themeNotifier;
 
   @override
@@ -18,13 +20,33 @@ class _ThresholdAppState extends State<ThresholdApp> {
     super.initState();
     _themeNotifier = ThemeNotifier();
     _themeNotifier.addListener(_onThemeChanged);
+    WidgetsBinding.instance.addObserver(this);
+    
+    // Uygulama ilk açıldığında (cold boot) müzik/bildirim varsa şak diye kes!
+    try {
+      FlutterBackgroundService().invoke('stopSound');
+      FlutterLocalNotificationsPlugin().cancel(1);
+    } catch (_) {}
   }
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     _themeNotifier.removeListener(_onThemeChanged);
     _themeNotifier.dispose();
     super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      // Uygulama ön plana geldiği (açıldığı) an, her türlü çalan müziği kes
+      // ve alarm bildirimini temizle!
+      try {
+        FlutterBackgroundService().invoke('stopSound');
+        FlutterLocalNotificationsPlugin().cancel(1);
+      } catch (_) {}
+    }
   }
 
   void _onThemeChanged() => setState(() {});
