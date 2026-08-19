@@ -57,7 +57,7 @@ class _ThresholdAppState extends State<ThresholdApp> with WidgetsBindingObserver
     return ThemeNotifierProvider(
       notifier: _themeNotifier,
       child: MaterialApp.router(
-        title: 'Threshold',
+        title: 'Unutma Ha!',
         debugShowCheckedModeBanner: false,
         theme: AppTheme.light(palette.seedLight),
         darkTheme: AppTheme.dark(palette.seedDark),
