@@ -7,17 +7,28 @@ class NetworkMonitor {
   NetworkMonitor() {
     _initInitialState();
     _connectivity.onConnectivityChanged.listen((event) {
-      final next = event.isNotEmpty ? event.first : ConnectivityResult.none;
+      final next = _getDominantResult(event);
+      _currentStatus = next;
       _controller.add(next);
       logger.i('Connectivity changed: $next');
     });
   }
 
+  ConnectivityResult _currentStatus = ConnectivityResult.none;
+
   Future<void> _initInitialState() async {
     final result = await _connectivity.checkConnectivity();
-    final next = result.isNotEmpty ? result.first : ConnectivityResult.none;
-    _controller.add(next);
-    logger.i('Initial connectivity: $next');
+    _currentStatus = _getDominantResult(result);
+    _controller.add(_currentStatus);
+    logger.i('Initial connectivity: $_currentStatus');
+  }
+
+  ConnectivityResult _getDominantResult(List<ConnectivityResult> results) {
+    if (results.isEmpty) return ConnectivityResult.none;
+    if (results.contains(ConnectivityResult.wifi)) return ConnectivityResult.wifi;
+    if (results.contains(ConnectivityResult.mobile)) return ConnectivityResult.mobile;
+    if (results.contains(ConnectivityResult.ethernet)) return ConnectivityResult.wifi; // treat ethernet as wifi
+    return results.first;
   }
 
   final Connectivity _connectivity = Connectivity();
@@ -28,7 +39,7 @@ class NetworkMonitor {
 
   Future<ConnectivityResult> get currentStatus async {
     final result = await _connectivity.checkConnectivity();
-    return result.isNotEmpty ? result.first : ConnectivityResult.none;
+    return _getDominantResult(result);
   }
 
   void dispose() {

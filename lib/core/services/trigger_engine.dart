@@ -9,6 +9,11 @@ class TriggerEngine {
     required this.networkMonitor,
     required this.notificationService,
   }) {
+    _init();
+  }
+
+  Future<void> _init() async {
+    _lastResult = await networkMonitor.currentStatus;
     networkMonitor.stream.listen(_onConnectivityChange);
   }
 
@@ -34,12 +39,9 @@ class TriggerEngine {
     }
 
     // ── Guard 2: Ev Wi-Fi adı girilmiş mi? ──────────────────────────────
-    final homeWifi =
-        LocalStorageService.prefs.getString('home_wifi_name') ?? '';
+    var homeWifi = LocalStorageService.prefs.getString('home_wifi_name') ?? '';
     if (homeWifi.isEmpty) {
-      // Ev Wi-Fi ayarlanmamışsa tetikleme
-      _lastResult = result;
-      return;
+      homeWifi = 'Ev Wi-Fi'; // Girmemişse bile varsayılan bir isimle çalışsın!
     }
 
     // ── Guard 3: Önceki durum Wi-Fi idi mi? ─────────────────────────────
