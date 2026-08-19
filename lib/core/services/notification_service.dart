@@ -85,28 +85,19 @@ class NotificationService {
     final soundMode = NotificationService.getSoundMode();
     final customPath = NotificationService.getCustomSoundPath();
 
-    AndroidNotificationSound? androidSound;
-    if (soundMode == NotifSoundMode.custom && customPath != null) {
-      // Android URI requires file:// prefix for absolute paths
-      androidSound = UriAndroidNotificationSound('file://$customPath');
-    }
-
-    // Her ses modu ve yolu için farklı bir kanal oluşturmalıyız (Android sesi cache'ler)
-    final channelIdStr = 'channel_${soundMode.name}_${customPath.hashCode}';
+    // Ses çal (Manual audioplayers playback)
+    await _playSound(soundMode, customPath);
 
     final androidDetails = AndroidNotificationDetails(
-      channelIdStr,
-      'Çıkış Hatırlatıcıları',
-      channelDescription: 'Evden çıkış bildirimleri ve alarmlar',
+      _kChannelId,
+      _kChannelName,
+      channelDescription: 'Evden çıkış hatırlatıcıları',
       importance: Importance.max,
       priority: Priority.high,
       ticker: 'Threshold',
-      playSound: soundMode != NotifSoundMode.silent,
-      sound: androidSound,
+      playSound: false, // Biz manuel çalıyoruz
       enableVibration: true,
       fullScreenIntent: true,
-      // FLAG_INSISTENT (4) - Alarm gibi sürekli çalar, bildirime basılana kadar durmaz
-      additionalFlags: Int32List.fromList([4]),
       actions: const [
         AndroidNotificationAction(
           'done',
@@ -133,11 +124,12 @@ class NotificationService {
   }
 
   Future<void> _playSound(NotifSoundMode mode, String? customPath) async {
-    // Sadece önizleme (Settings ekranı) için kullanılıyor artık.
     try {
       await _audioPlayer.stop();
       await _audioPlayer.setVolume(1.0);
-      await _audioPlayer.setReleaseMode(ReleaseMode.stop);
+      
+      // Alarm gibi davranması için döngüye al
+      await _audioPlayer.setReleaseMode(ReleaseMode.loop);
 
       switch (mode) {
         case NotifSoundMode.alarm:
