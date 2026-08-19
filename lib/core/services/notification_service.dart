@@ -101,13 +101,13 @@ class NotificationService {
         AndroidNotificationAction(
           'done',
           'Hepsini Aldım',
-          showsUserInterface: true,
+          showsUserInterface: false,
           cancelNotification: true,
         ),
         AndroidNotificationAction(
           'delay',
           'Ertele',
-          showsUserInterface: true,
+          showsUserInterface: false,
           cancelNotification: true,
         ),
       ],

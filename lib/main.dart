@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -10,10 +12,14 @@ import 'package:threshold/core/services/local_storage_service.dart';
 
 /// Uygulama KAPALI/ARKA PLANDA iken bildirim butonlarına basılınca
 /// bu top-level fonksiyon çalışır (Dart VM entry point).
+
 @pragma('vm:entry-point')
 Future<void> onBackgroundNotificationResponse(
   NotificationResponse response,
 ) async {
+  WidgetsFlutterBinding.ensureInitialized();
+  DartPluginRegistrant.ensureInitialized();
+  
   await LocalStorageService.init();
   final actionId = response.actionId;
   if (actionId == 'done') {
