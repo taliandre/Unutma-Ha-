@@ -124,10 +124,10 @@ class NotificationService {
     );
 
     await _plugin.show(
-      _kNotifId,
-      'Evden çıkıyorsun 🔑',
-      'Kontrol listeni gözden geçir. $wifiName ağından ayrıldın.',
-      NotificationDetails(android: androidDetails),
+      id: _kNotifId,
+      title: 'Evden çıkıyorsun 🔑',
+      body: 'Kontrol listeni gözden geçir. $wifiName ağından ayrıldın.',
+      notificationDetails: NotificationDetails(android: androidDetails),
       payload: 'checklist',
     );
   }
