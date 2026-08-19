@@ -74,10 +74,13 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
     );
 
     if (file != null && file.path != null) {
-      final docDir = await getApplicationDocumentsDirectory();
+      final extDir = await getExternalStorageDirectory();
       final originalFile = File(file.path!);
       final ext = originalFile.path.split('.').last;
-      final newPath = '${docDir.path}/custom_sound_${DateTime.now().millisecondsSinceEpoch}.$ext';
+      
+      // External storage may be null on some devices, fallback to docs if needed
+      final targetDir = extDir ?? await getApplicationDocumentsDirectory();
+      final newPath = '${targetDir.path}/custom_sound_${DateTime.now().millisecondsSinceEpoch}.$ext';
       
       final permanentFile = await originalFile.copy(newPath);
       final path = permanentFile.path;

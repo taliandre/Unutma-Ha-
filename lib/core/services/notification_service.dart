@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter_background_service/flutter_background_service.dart';
@@ -84,19 +85,28 @@ class NotificationService {
     final soundMode = NotificationService.getSoundMode();
     final customPath = NotificationService.getCustomSoundPath();
 
-    // Ses çal
-    await _playSound(soundMode, customPath);
+    AndroidNotificationSound? androidSound;
+    if (soundMode == NotifSoundMode.custom && customPath != null) {
+      // Android URI requires file:// prefix for absolute paths
+      androidSound = UriAndroidNotificationSound('file://$customPath');
+    }
+
+    // Her ses modu ve yolu için farklı bir kanal oluşturmalıyız (Android sesi cache'ler)
+    final channelIdStr = 'channel_${soundMode.name}_${customPath.hashCode}';
 
     final androidDetails = AndroidNotificationDetails(
-      _kChannelId,
-      _kChannelName,
-      channelDescription: 'Evden çıkış hatırlatıcıları',
+      channelIdStr,
+      'Çıkış Hatırlatıcıları',
+      channelDescription: 'Evden çıkış bildirimleri ve alarmlar',
       importance: Importance.max,
       priority: Priority.high,
       ticker: 'Threshold',
-      playSound: false, // Biz manuel çalıyoruz
+      playSound: soundMode != NotifSoundMode.silent,
+      sound: androidSound,
       enableVibration: true,
       fullScreenIntent: true,
+      // FLAG_INSISTENT (4) - Alarm gibi sürekli çalar, bildirime basılana kadar durmaz
+      additionalFlags: Int32List.fromList([4]),
       actions: const [
         AndroidNotificationAction(
           'done',
@@ -114,15 +124,16 @@ class NotificationService {
     );
 
     await _plugin.show(
-      id: _kNotifId,
-      title: 'Evden çıkıyorsun 🔑',
-      body: 'Kontrol listeni gözden geçir. $wifiName ağından ayrıldın.',
+      _kNotifId,
+      'Evden çıkıyorsun 🔑',
+      'Kontrol listeni gözden geçir. $wifiName ağından ayrıldın.',
+      NotificationDetails(android: androidDetails),
       payload: 'checklist',
-      notificationDetails: NotificationDetails(android: androidDetails),
     );
   }
 
   Future<void> _playSound(NotifSoundMode mode, String? customPath) async {
+    // Sadece önizleme (Settings ekranı) için kullanılıyor artık.
     try {
       await _audioPlayer.stop();
       await _audioPlayer.setVolume(1.0);
