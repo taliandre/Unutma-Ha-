@@ -98,20 +98,6 @@ class NotificationService {
       playSound: false, // Biz manuel çalıyoruz
       enableVibration: true,
       fullScreenIntent: true,
-      actions: const [
-        AndroidNotificationAction(
-          'done',
-          'Hepsini Aldım',
-          showsUserInterface: false,
-          cancelNotification: true,
-        ),
-        AndroidNotificationAction(
-          'delay',
-          'Ertele',
-          showsUserInterface: false,
-          cancelNotification: true,
-        ),
-      ],
     );
 
     await _plugin.show(
