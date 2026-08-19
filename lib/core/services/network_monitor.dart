@@ -5,11 +5,19 @@ import 'package:threshold/core/utils/app_logger.dart';
 
 class NetworkMonitor {
   NetworkMonitor() {
+    _initInitialState();
     _connectivity.onConnectivityChanged.listen((event) {
       final next = event.isNotEmpty ? event.first : ConnectivityResult.none;
       _controller.add(next);
       logger.i('Connectivity changed: $next');
     });
+  }
+
+  Future<void> _initInitialState() async {
+    final result = await _connectivity.checkConnectivity();
+    final next = result.isNotEmpty ? result.first : ConnectivityResult.none;
+    _controller.add(next);
+    logger.i('Initial connectivity: $next');
   }
 
   final Connectivity _connectivity = Connectivity();
