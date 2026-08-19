@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unutma Ha! - Akıllı Çıkış Asistanı</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Unutma Ha!</div>
+        <ul class="nav-links">
+            <li><a href="#hakkimizda">Hakkımızda</a></li>
+            <li><a href="#indir">İndir</a></li>
+            <li><a href="#destek">Destek Ol</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Evden Çıkarken Stres Yapmaya Son!</h1>
+            <p>Siz kapıdan çıktığınız an devreye giren akıllı asistanınız. Ütüyü fişte mi unuttunuz? Anahtarınızı mı almadınız? <b>Unutma Ha!</b> sizi uyarır.</p>
+            <div class="hero-buttons">
+                <a href="https://github.com/taliandre/Unutma-Ha-/releases/latest/download/app-release.apk" class="btn btn-primary"><i class="fa-brands fa-android"></i> APK İndir</a>
+                <a href="#hakkimizda" class="btn btn-secondary">Daha Fazla Bilgi</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="mockup-frame">
+                <h2><i class="fa-solid fa-wifi"></i></h2>
+                <br>
+                <h3>Wi-Fi Koptu!</h3>
+                <p>Kontrol listeni gözden geçir.</p>
+                <div class="mockup-button">Hepsini Aldım</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hakkımızda Section -->
+    <section id="hakkimizda" class="about">
+        <h2>Uygulama Nasıl Çalışır?</h2>
+        <div class="features">
+            <div class="feature-card">
+                <i class="fa-solid fa-house-signal"></i>
+                <h3>Anında Tespit</h3>
+                <p>Evinizin veya ofisinizin Wi-Fi ağından ayrıldığınızı sıfır gecikmeyle tespit eder ve arkaplanda çalışarak sizi uyarır.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-list-check"></i>
+                <h3>Kontrol Listesi</h3>
+                <p>Cüzdan, anahtar, ütü veya ocak... Evden çıkmadan önce hatırlamanız gereken her şeyi kendi listenize ekleyin.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-music"></i>
+                <h3>Özel Alarmlar</h3>
+                <p>Sıradan bildirim seslerinden sıkıldınız mı? Kendi müziklerinizi veya ses kayıtlarınızı çıkış alarmı olarak ayarlayın.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- İndir Section -->
+    <section id="indir" class="download">
+        <h2>Hemen İndir ve Kur</h2>
+        <p>Google Play'i beklemeden uygulamanın en güncel sürümünü doğrudan cihazınıza kurabilirsiniz.</p>
+        <div class="download-steps">
+            <ol>
+                <li>Aşağıdaki butona tıklayarak <b>.apk</b> dosyasını telefonunuza indirin.</li>
+                <li>İndirilen dosyaya tıklayın ve telefonunuzun uyarı vermesi halinde <b>"Bilinmeyen Kaynaklara İzin Ver"</b> seçeneğini aktif edin.</li>
+                <li>Kurulumu tamamlayın ve arkanıza yaslanın!</li>
+            </ol>
+        </div>
+        <a href="https://github.com/taliandre/Unutma-Ha-/releases/latest/download/app-release.apk" class="btn btn-primary large-btn"><i class="fa-solid fa-download"></i> Ücretsiz İndir (APK)</a>
+    </section>
+
+    <!-- Destek Ol Section -->
+    <section id="destek" class="support">
+        <h2>Geliştiriciye Destek Ol</h2>
+        <p>Bu uygulama tamamen ücretsiz, reklamsız ve açık kaynaklıdır. Eğer hayatınızı kolaylaştırdıysa ve geliştirilmesine katkıda bulunmak isterseniz, bana bir kahve ısmarlayabilirsiniz! ☕</p>
+        <a href="https://donate.bynogame.com/taliapps" target="_blank" class="btn btn-support"><i class="fa-solid fa-heart"></i> ByNoGame ile Destek Ol</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 TALI APPS - Tüm Hakları Saklıdır.</p>
+        <div class="socials">
+            <a href="https://github.com/taliandre" target="_blank"><i class="fa-brands fa-github"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
