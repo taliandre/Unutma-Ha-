@@ -41,7 +41,8 @@ class AppBootstrap {
       },
 
       // Bildirimin kendisine tıklandı → kontrol listesini aç
-      onNotifTapped: (payload) {
+      onNotifTapped: (payload) async {
+        await notificationService.dismiss();
         if (payload == 'checklist') {
           AppRouter.router.push('/checklist');
         }

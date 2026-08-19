@@ -96,6 +96,7 @@ class NotificationService {
       ticker: 'Threshold',
       playSound: false, // Biz manuel çalıyoruz
       enableVibration: true,
+      fullScreenIntent: true,
       actions: const [
         AndroidNotificationAction(
           'done',
@@ -106,7 +107,7 @@ class NotificationService {
         AndroidNotificationAction(
           'delay',
           'Ertele',
-          showsUserInterface: false,
+          showsUserInterface: true,
           cancelNotification: true,
         ),
       ],
