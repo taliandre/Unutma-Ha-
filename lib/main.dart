@@ -22,6 +22,10 @@ Future<void> onBackgroundNotificationResponse(
     await LocalStorageService.prefs.setString('last_notification_action', 'delay');
     await HistoryService.addEntry(action: 'delay', note: 'Bildirim ertelendi (arka plan).');
   }
+  
+  // Arka plan servisinde çalan sesi durdur (isolate'ler arası iletişim)
+  FlutterBackgroundService().invoke('stopSound');
+  
   await FlutterLocalNotificationsPlugin().cancel(id: 1);
 }
 

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:threshold/core/services/local_storage_service.dart';
@@ -173,6 +174,7 @@ class NotificationService {
   Future<void> dismiss() async {
     await _plugin.cancel(id: _kNotifId);
     await _audioPlayer.stop();
+    FlutterBackgroundService().invoke('stopSound');
   }
 
   // ─── Tercih Yardımcıları ──────────────────────────────────────────────────

@@ -10,7 +10,11 @@ void onStart(ServiceInstance service) async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Arka planda tüm asistanları (Wi-Fi, Konum vb.) başlat.
-  await AppBootstrap.initialize(isBackground: true);
+  final initResult = await AppBootstrap.initialize(isBackground: true);
+
+  service.on('stopSound').listen((event) async {
+    await initResult.notificationService.stopPreview();
+  });
 
   // Uygulama tamamen kapatılsa bile bu döngü çalışmaya devam eder.
   service.on('stopService').listen((event) {
